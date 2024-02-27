@@ -3,7 +3,7 @@ import login from "../pageobjects/loginpage.po"
 
 
 describe('verify login functionaity', () => {
-    it.only('loginwith valid creds', () => {
+    it('loginwith valid creds', () => {
       cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
       cy.get(login.UserNameInput()).type('Admin')
       cy.get(login.passwordInput()).type('admin123')
@@ -13,7 +13,7 @@ describe('verify login functionaity', () => {
     })
     it('verify login functionality with valid user name and invalid password',()=>{
       cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-      cy.get(logn.UserNameInput()).type('Admin')
+      cy.get(login.UserNameInput()).type('Admin')
       cy.get(login.passwordInput()).type('admin1234')
       cy.get(login.loginButton()).click()
       cy.contains(login.loginErrorMessage()).should('be.visible')
@@ -24,13 +24,13 @@ describe('verify login functionaity', () => {
       cy.get(login.UserNameInput()).type('Adminn')
       cy.get(login.passwordInput()).type('admin123')
       cy.get(login.loginButton()).click()
-      cy.contains(login.loginErrorMessage).should('be.visible')
+      cy.contains(login.loginErrorMessage()).should('be.visible')
 
 
   })
 it('verify login functionality with invalid username and invalid password',()=>{
       cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-      cy.get(login.UserNameInput).type('Adminn')
+      cy.get(login.UserNameInput()).type('Adminn')
       cy.get(login.passwordInput()).type('admin1234')
       cy.get(login.loginButton()).click()
       cy.contains(login.loginErrorMessage()).should('be.visible')
